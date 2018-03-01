@@ -51,7 +51,7 @@ export class AddOptionsComponent implements OnInit {
     this.http.getCategoryData().subscribe( (data: any): void => {
       this.data = data._embedded.classifications;
       this.data.forEach( (classification: any) => {
-        if (classification.segment !== undefined) {
+        if (classification.segment) {
           this.categories.push(classification.segment.name);
         }
       });
@@ -61,12 +61,10 @@ export class AddOptionsComponent implements OnInit {
   private getSubCategory(category: string): void {
     this.genres = ['Select sub category'];
     this.data.forEach( (classification: any) => {
-      if (classification.segment !== undefined) {
-        if (classification.segment.name === category) {
+      if (classification.segment && classification.segment.name === category) {
           classification.segment._embedded.genres.forEach((genre: any) => {
             this.genres.push(genre.name);
           });
-        }
       }
     });
   }

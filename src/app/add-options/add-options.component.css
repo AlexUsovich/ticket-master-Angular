@@ -62,19 +62,3 @@ option{
   font-size: 1.7rem;
 }
 
-@media screen and (max-width: 600px) {
-  .content__aside {
-    z-index: 99;
-    display: none;
-  }
-
-  .content__aside_opened{
-    display: block;
-    position: fixed;
-    right: 0;
-    width: 100%;
-    border: #5d1862 3px solid;
-    border-radius: 10px;
-  }
-
-}

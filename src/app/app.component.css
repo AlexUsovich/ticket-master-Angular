@@ -5,9 +5,8 @@ app-add-options {
 }
 
 app-event-group {
-  width: 60%;
   flex: auto;
-  padding: 0 4rem;
+  padding: 0 2rem;
 }
 
 app-headline {
@@ -43,4 +42,33 @@ app-headline {
   width: 100%;
   background: rgba(60, 0, 54, 0.81);
   bottom: 0;
+}
+
+@media screen and (max-width: 900px) {
+  app-event-group {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  app-add-options {
+    display: none;
+  }
+
+  .main-container {
+    padding-top: 100px;
+  }
+
+  app-event-group {
+    width: 100%;
+  }
+
+  .content__aside_opened{
+    display: block;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    border: #5d1862 3px solid;
+    border-radius: 10px;
+  }
 }

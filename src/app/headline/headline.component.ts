@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadlineComponent implements OnInit {
 
-  constructor() { }
+  public burgerMenu: any;
+  public searchMenu: any;
 
-  ngOnInit() {
+  public constructor() { }
+
+  public ngOnInit(): void {
+    this.changeValues();
+  }
+
+  public changeValues(): void {
+
   }
 
 }
