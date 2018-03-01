@@ -1,0 +1,74 @@
+app-search-bar{
+  min-width: 500px;
+  margin-right: 1%;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  background: url("./header2.jpg");
+  z-index: 99;
+}
+
+.header__top{
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 1em;
+}
+
+.header__logo {
+  color: transparent;
+  background: url(./log.png) no-repeat;
+  background-size: contain;
+  padding: 30px 80px;
+  margin-right: 1%;
+  text-indent: -9999px;
+}
+
+.menu__item {
+  margin-right: 10px;
+  font-size: 2.2rem;
+  color: #eee;
+  text-decoration: none;
+}
+
+.my-acc{
+  padding-left: 35px;
+  background: url("./user.png") no-repeat;
+  background-size: contain;
+}
+
+.header__menu :last-child {
+  margin: 0;
+}
+
+@media screen and (max-width: 950px) {
+
+  .header__logo{
+    padding: 2.0rem 3.8rem;
+  }
+
+  app-search-bar{
+    flex: 1;
+    min-width: 50px;
+  }
+
+  .header__top{
+    padding: 0 0.5em;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .header__logo{
+    padding: 1.7rem 4rem;
+  }
+
+  .header__menu{
+    display: none;
+  }
+}

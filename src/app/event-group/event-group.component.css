@@ -1,0 +1,15 @@
+/deep/ .events__title{
+  font-size: 3em;
+  margin:0.5rem auto;
+  text-align: center;
+  color: #eeeeee;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .main-container {
+    width: 100%;
+    min-width: 280px;
+    padding-top: 100px;
+  }
+}

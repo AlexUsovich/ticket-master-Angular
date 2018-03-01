@@ -1,0 +1,46 @@
+app-add-options {
+  max-width: 250px;
+  margin-right: 3%;
+  width: 30%;
+}
+
+app-event-group {
+  width: 60%;
+  flex: auto;
+  padding: 0 4rem;
+}
+
+app-headline {
+  position: fixed;
+  width: 100%;
+  background: url(./headline/header2.jpg);
+  z-index: 99;
+}
+
+#page_prldr{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom:0;
+  background: rgba(60, 0, 54, 0.98);
+  z-index: 100;
+}
+
+.svg_anm {
+  left: 50%;top: 48%;
+  margin-left:-50px;
+  margin-top:-50px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url(./pufff.svg) center center no-repeat;
+  background-size:70px;
+}
+
+.footer{
+  position: fixed;
+  width: 100%;
+  background: rgba(60, 0, 54, 0.81);
+  bottom: 0;
+}
