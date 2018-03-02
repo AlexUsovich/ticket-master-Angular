@@ -4,9 +4,16 @@ app-add-options {
   width: 30%;
 }
 
-app-event-group {
+/deep/app-event-group{
   flex: auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  width: 60%;
+}
+
+/deep/app-search-events{
+  flex: auto;
+  padding: 0 1.5rem;
+  width: 60%;
 }
 
 app-headline {

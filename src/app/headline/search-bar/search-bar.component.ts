@@ -6,15 +6,11 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  @Input() public openedSearch: boolean = false;
+  @Input() public openedSearch: boolean;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  public closeOpen(): void {
-    this.openedSearch === true ? this.openedSearch = false : this.openedSearch = true;
   }
 
 }

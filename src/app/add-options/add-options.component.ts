@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
 import { DateTimeService } from '../services/date-time.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-options',
@@ -10,6 +11,8 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./add-options.component.css']
 })
 export class AddOptionsComponent implements OnInit {
+  @Output() public searchData: EventEmitter<any> = new  EventEmitter<any>();
+
   public additionalForm: FormGroup;
 
   public categories: Array<string> = ['Select category'];
@@ -37,7 +40,11 @@ export class AddOptionsComponent implements OnInit {
 
   private initForm(): void {
     this.additionalForm = this.fb.group({
-      category: null
+      category: null,
+      subcategory: null,
+      city: null,
+      startDate: this.today,
+      endDate: this.inWeek,
     });
   }
 
@@ -68,4 +75,16 @@ export class AddOptionsComponent implements OnInit {
       }
     });
   }
+
+  private getInformation(): void {
+    const httpParams: any = new HttpParams();
+    httpParams.set('size', '10');
+    //httpParams.set('startDateTime', this.datetime.convertData(this.additionalForm.get('startDate')));
+    //httpParams.set('endDateTime', this.datetime.convertData(this.additionalForm.get('startDate')));
+    if (this.additionalForm.get('category').toString() !== 'Select category') {httpParams.set('classificationName', this.datetime.convertData(this.additionalForm.get('startDate'))); }
+    if (this.additionalForm.get('subcategory').toString() !== 'Select sub category') {httpParams.set('keyword', this.datetime.convertData(this.additionalForm.get('startDate'))); }
+    this.searchData.emit(httpParams);
+    alert();
+  }
+
 }

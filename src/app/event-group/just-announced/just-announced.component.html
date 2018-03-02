@@ -1,5 +1,2 @@
 <h2 class="events__title">Just Announced</h2>
-  <app-event></app-event>
-  <app-event></app-event>
-  <app-event></app-event>
-  <app-event></app-event>
+  <app-event *ngFor="let event of events" [data]="event"></app-event>

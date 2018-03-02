@@ -15,7 +15,8 @@ import { HappeningSoonComponent } from './event-group/happening-soon/happening-s
 import { SearchEventsComponent } from './event-group/search-events/search-events.component';
 import { EventComponent } from './event-group/event/event.component';
 import { GetDataService } from './services/get-data.service';
-import {DateTimeService} from "./services/date-time.service";
+import { DateTimeService } from './services/date-time.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import {DateTimeService} from "./services/date-time.service";
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {path: 'home', component: EventGroupComponent},
+      {path: 'search', component: SearchEventsComponent},
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
+    ])
   ],
   providers: [
     GetDataService,

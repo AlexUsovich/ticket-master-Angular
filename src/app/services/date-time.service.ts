@@ -19,4 +19,9 @@ export class DateTimeService {
     this.inWeekCalendar = newDate.toISOString().substr(0, 10);
   }
 
+  public convertData(interDate: any): any {
+    alert(interDate);
+    return new Date(interDate.replace(/(\d+)-(\d+)-(\d+)/, '$2/$3/$1')).toISOString().substr(0, 19) + 'Z';
+  }
+
 }

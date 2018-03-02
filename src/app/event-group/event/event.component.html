@@ -1,26 +1,26 @@
-<div class="event">
+<div *ngIf="data" class="event">
   <div class="event__foto">
     <div class="foto__container">
-      <span class="foto__data"><span class="day"></span><br><span class="month"></span></span>
-      <img class="foto__image" alt="" src="">
+      <span class="foto__data"><span class="day">{{day}}</span><br><span class="month">{{month}}</span></span>
+      <img class="foto__image" alt="" src="{{image}}">
     </div>
   </div>
   <div class="event__preview">
     <div class="event__title">
-      <h4></h4>
+      <h4>{{title}}</h4>
     </div>
     <div class="event__venues">
-      <span></span>
+      <span>{{venues}}</span>
     </div>
     <div class="event__descrip">
-      <p></p>
+      <p>{{description}}</p>
     </div>
     <span class="info">Read more...</span>
     <div class="event__classifications">
-      <p></p>
+      <p>{{classifications}}</p>
     </div>
-    <div class="event__data">
-      <span class="date"></span><span> at </span><span class="time"></span>
+    <div class="event__date">
+      <span class="date"></span>{{date}}<span> at </span><span class="time">{{time}}</span>
     </div>
   </div>
 </div>

@@ -6,15 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./burger-menu.component.css']
 })
 export class BurgerMenuComponent implements OnInit {
-  @Input() public openedBurger: boolean = false;
+  @Input() public openedBurger: boolean;
 
   public constructor() { }
 
   public ngOnInit(): void {
-  }
-
-  public closeOpen(): void {
-    this.openedBurger === true ? this.openedBurger = false : this.openedBurger = true;
   }
 
 }

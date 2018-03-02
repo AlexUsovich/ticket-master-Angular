@@ -7,17 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadlineComponent implements OnInit {
 
-  public burgerMenu: any;
-  public searchMenu: any;
+  public openedBurger: boolean = false;
+  public openedSearch: boolean = false;
 
   public constructor() { }
 
   public ngOnInit(): void {
-    this.changeValues();
   }
 
-  public changeValues(): void {
+  public changeValuesBurger(): void {
+    if (this.openedBurger === true) {
+      this.openedBurger = false;
+    } else {
+      this.openedBurger = true;
+      this.openedSearch = false;
+    }
+  }
 
+  public changeValuesSearch(): void {
+    if (this.openedSearch === true) {
+      this.openedSearch = false;
+    } else {
+      this.openedSearch = true;
+      this.openedBurger = false;
+    }
   }
 
 }

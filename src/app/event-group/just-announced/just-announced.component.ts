@@ -9,6 +9,7 @@ import {DateTimeService} from '../../services/date-time.service';
   styleUrls: ['./just-announced.component.css']
 })
 export class JustAnnouncedComponent implements OnInit {
+  public events: any;
 
   public constructor(private http: GetDataService, private datetime: DateTimeService) {
   }
@@ -22,11 +23,12 @@ export class JustAnnouncedComponent implements OnInit {
     const inWeek: any = this.datetime.inWeek;
     let httpParams: any = new HttpParams();
     httpParams = httpParams.set('size', '4');
-    httpParams = httpParams.set('startDateTime', today);
-    httpParams = httpParams.set('endDateTime', inWeek);
+    httpParams = httpParams.set('onsaleStartDateTime', today);
+    httpParams = httpParams.set('onsaleEndDateTime', inWeek);
 
     this.http.getEventsData(httpParams).subscribe((data: any): void => {
-      alert('!');
+      alert('!ja!');
+      this.events = data._embedded.events;
     });
   }
 
