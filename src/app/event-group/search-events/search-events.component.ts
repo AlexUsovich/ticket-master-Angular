@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GetDataService} from '../../services/get-data.service';
-import {HttpParams} from '@angular/common/http';
+import {ObserveDataService} from '../../services/observe-data.service';
 
 @Component({
   selector: 'app-search-events',
@@ -8,23 +8,23 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./search-events.component.css']
 })
 export class SearchEventsComponent implements OnInit {
+  public title: string = 'Query results';
   public events: any;
 
-  public constructor(private http: GetDataService) {
+  public constructor(
+    private http: GetDataService,
+    private observerService: ObserveDataService,
+  ) {
   }
 
   public ngOnInit(): void {
-    this.getData();
-  }
-
-  private getData(): void {
-    let httpParams: any = new HttpParams();
-    httpParams = httpParams.set('size', '4');
-
-    this.http.getEventsData(httpParams).subscribe((data: any): void => {
-      alert('!cat!');
-      this.events = data._embedded.events;
+    this.observerService.getDataStream().subscribe( (data: any) => {
+      if (data._embedded !== undefined) {
+        this.events = data._embedded.events;
+        this.title = 'Query results';
+      } else {
+        this.title = 'Nothing found for your request! Please, try again!';
+      }
     });
   }
-
 }

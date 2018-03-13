@@ -27,7 +27,6 @@ export class JustAnnouncedComponent implements OnInit {
     httpParams = httpParams.set('onsaleEndDateTime', inWeek);
 
     this.http.getEventsData(httpParams).subscribe((data: any): void => {
-      alert('!ja!');
       this.events = data._embedded.events;
     });
   }

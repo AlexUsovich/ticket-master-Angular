@@ -11,7 +11,10 @@ import {DateTimeService} from '../../services/date-time.service';
 export class HappeningSoonComponent implements OnInit {
   public events: any;
 
-  public constructor(private http: GetDataService, private datetime: DateTimeService) {
+  public constructor(
+    private http: GetDataService,
+    private datetime: DateTimeService
+  ) {
   }
 
   public ngOnInit(): void {
@@ -27,7 +30,6 @@ export class HappeningSoonComponent implements OnInit {
     httpParams = httpParams.set('endDateTime', inWeek);
 
     this.http.getEventsData(httpParams).subscribe((data: any): void => {
-      alert('!hs!');
       this.events = data._embedded.events;
     });
   }

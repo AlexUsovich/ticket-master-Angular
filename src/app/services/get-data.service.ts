@@ -18,7 +18,7 @@ export class GetDataService {
   }
 
   public getEventsData(params: any): Observable<any> {
-    const fullUrl: string = `${this.APIURL}${this.EVENTS}${this.APIKEY2}`;
+    const fullUrl: string = `${this.APIURL}${this.EVENTS}${this.APIKEY}`;
     return this.httpClient.get(fullUrl, { params: params });
   }
 

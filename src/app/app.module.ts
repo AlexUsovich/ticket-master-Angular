@@ -17,6 +17,7 @@ import { EventComponent } from './event-group/event/event.component';
 import { GetDataService } from './services/get-data.service';
 import { DateTimeService } from './services/date-time.service';
 import { RouterModule } from '@angular/router';
+import {ObserveDataService} from './services/observe-data.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     GetDataService,
-    DateTimeService
+    DateTimeService,
+    ObserveDataService
   ],
   bootstrap: [AppComponent]
 })
