@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-event',
@@ -16,8 +17,12 @@ export class EventComponent implements OnInit {
   public day: string;
   public time: string;
   public month: any;
+  public opened: boolean = false;
 
-  public constructor() {
+  public constructor(private location: Location) {
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      this.opened = true;
+    }
   }
 
   public ngOnInit(): void {
@@ -35,8 +40,16 @@ export class EventComponent implements OnInit {
     }
   }
 
-  openOneEvent(){
+  public openOneEvent(){
 
+  }
+
+  public readMore(): void {
+    this.opened = true;
+  }
+
+  public goBack(): void {
+    this.location.back();
   }
 
 }

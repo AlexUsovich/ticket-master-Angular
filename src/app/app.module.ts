@@ -40,6 +40,7 @@ import {ObserveDataService} from './services/observe-data.service';
     RouterModule.forRoot([
       {path: 'home', component: EventGroupComponent},
       {path: 'search', component: SearchEventsComponent},
+      {path: 'event', component: EventComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
     ])
   ],

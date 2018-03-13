@@ -23,6 +23,7 @@ export class SearchEventsComponent implements OnInit {
         this.events = data._embedded.events;
         this.title = 'Query results';
       } else {
+        this.events = null;
         this.title = 'Nothing found for your request! Please, try again!';
       }
     });

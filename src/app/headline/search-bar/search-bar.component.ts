@@ -24,7 +24,6 @@ export class SearchBarComponent implements OnInit {
     httpParams = httpParams.set('size', '10');
     httpParams = httpParams.set('keyword', expression);
     this.http.getEventsData(httpParams).subscribe( (data: any): void => {
-      console.log(data);
       this.observe.setDataStream(data);
     });
   }

@@ -55,7 +55,7 @@
   margin-bottom: 1rem;
 }
 
-.event__data{
+.event__date{
   flex: 0 0 auto;
   position: relative;
   font-size: 1.5rem;
@@ -112,24 +112,15 @@
   font-size: 3.6rem;
 }
 
-.event__classifications{
-  display: none;
-}
-
 .info{
-  display: none;
   font-size: 1.5rem;
   cursor: pointer;
   flex: 1 0 auto;
 }
 
 @media screen and (max-width: 900px) {
-  .info{
-    display: inline;
-  }
-
-  .event__descrip {
-    display: none;
+  .event__foto_opened {
+    width: 100%;
   }
 
   .day{
