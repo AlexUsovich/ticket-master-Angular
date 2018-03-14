@@ -6,6 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public searchData: any;
+  public openedSearch: any;
+
+  public openAddComponent(opened: any): any {
+    this.openedSearch = opened;
+  }
 
 }

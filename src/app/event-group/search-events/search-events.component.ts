@@ -13,12 +13,12 @@ export class SearchEventsComponent implements OnInit {
 
   public constructor(
     private http: GetDataService,
-    private observerService: ObserveDataService,
+    private observeService: ObserveDataService,
   ) {
   }
 
   public ngOnInit(): void {
-    this.observerService.getDataStream().subscribe( (data: any) => {
+    this.observeService.getDataStream().subscribe( (data: any) => {
       if (data._embedded !== undefined) {
         this.events = data._embedded.events;
         this.title = 'Query results';

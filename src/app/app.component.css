@@ -4,13 +4,7 @@ app-add-options {
   width: 30%;
 }
 
-/deep/app-event-group{
-  flex: auto;
-  padding: 0 1.5rem;
-  width: 60%;
-}
-
-/deep/app-search-events{
+/deep/app-event-group, /deep/app-search-events, /deep/app-event-detail{
   flex: auto;
   padding: 0 1.5rem;
   width: 60%;
@@ -59,7 +53,12 @@ app-headline {
 
 @media screen and (max-width: 600px) {
   app-add-options {
-    display: none;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    border: #5d1862 3px solid;
+    border-radius: 10px;
+    z-index: 99;
   }
 
   .main-container {

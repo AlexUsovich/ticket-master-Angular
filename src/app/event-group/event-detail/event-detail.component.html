@@ -1,22 +1,21 @@
 <div *ngIf="data" class="event">
-  <div routerLink="/event-detail" [ngClass]="{'event__photo_opened' : opened}" (click)="openOneEvent()" class="event__photo">
+  <div class="event__photo">
     <div class="photo__container">
       <span class="photo__data"><span class="day">{{day}}</span><br><span class="month">{{month}}</span></span>
-      <img class="photo__image" alt="" src="{{image}}">
+      <img class="photo__image" alt="photo" src="{{image}}">
     </div>
   </div>
   <div class="event__preview">
-    <div routerLink="/event-detail" (click)="openOneEvent()" class="event__title">
+    <div class="event__title">
       <h4>{{title}}</h4>
     </div>
     <div class="event__venues">
       <span>{{venues}}</span>
     </div>
-    <div *ngIf="opened" class="event__descrip">
+    <div class="event__descrip">
       <p>{{description}}</p>
     </div>
-    <span *ngIf="!opened" (click)="readMore()" class="info">Read more...</span>
-    <div *ngIf="opened" class="event__classifications">
+    <div class="event__classifications">
       <p>{{classifications}}</p>
     </div>
     <div class="event__date">
@@ -24,3 +23,4 @@
     </div>
   </div>
 </div>
+<a class="back" (click)="goBack()"></a>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-headline',
@@ -8,29 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class HeadlineComponent implements OnInit {
 
   public openedBurger: boolean = false;
-  public openedSearch: boolean = false;
+  @Output() public openedSearch: any = new EventEmitter<boolean>();
+  public opened: boolean = false;
 
   public constructor() { }
 
   public ngOnInit(): void {
+    if (window.matchMedia('(min-width: 600px)').matches) {
+      this.openedSearch.emit(true);
+    }
   }
 
   public changeValuesBurger(): void {
-    if (this.openedBurger === true) {
-      this.openedBurger = false;
-    } else {
-      this.openedBurger = true;
-      this.openedSearch = false;
-    }
+    this.openedBurger = !this.openedBurger;
+    this.openedSearch.emit(false);
   }
 
   public changeValuesSearch(): void {
-    if (this.openedSearch === true) {
-      this.openedSearch = false;
-    } else {
-      this.openedSearch = true;
-      this.openedBurger = false;
-    }
+    this.opened = !this.opened;
+    this.openedSearch.emit(this.opened);
+    this.openedBurger = false;
   }
 
 }

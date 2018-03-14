@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeadlineComponent } from './headline/headline.component';
@@ -18,6 +18,7 @@ import { GetDataService } from './services/get-data.service';
 import { DateTimeService } from './services/date-time.service';
 import { RouterModule } from '@angular/router';
 import {ObserveDataService} from './services/observe-data.service';
+import { EventDetailComponent } from './event-group/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,16 +32,18 @@ import {ObserveDataService} from './services/observe-data.service';
     JustAnnouncedComponent,
     HappeningSoonComponent,
     SearchEventsComponent,
-    EventComponent
+    EventComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: 'home', component: EventGroupComponent},
       {path: 'search', component: SearchEventsComponent},
-      {path: 'event', component: EventComponent},
+      {path: 'event-detail', component: EventDetailComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
     ])
   ],

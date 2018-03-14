@@ -26,7 +26,7 @@ export class AddOptionsComponent implements OnInit {
 
   public constructor(
     private http: GetDataService,
-    public observe: ObserveDataService,
+    public observeService: ObserveDataService,
     private datetime: DateTimeService,
     private fb: FormBuilder
   ) {
@@ -96,7 +96,7 @@ export class AddOptionsComponent implements OnInit {
     if ((this.additionalForm.get('category').value !== null) && (this.additionalForm.get('category').value !== 'Select category')) {httpParams = httpParams.set('classificationName', this.additionalForm.get('category').value); }
     if ((this.additionalForm.get('subcategory').value !== null) && (this.additionalForm.get('subcategory').value !== 'Select sub category')) {httpParams = httpParams.set('keyword', this.additionalForm.get('subcategory').value); }
     this.http.getEventsData(httpParams).subscribe( (additionalFormData: any): void => {
-      this.observe.setDataStream(additionalFormData);
+      this.observeService.setDataStream(additionalFormData);
     });
   }
 

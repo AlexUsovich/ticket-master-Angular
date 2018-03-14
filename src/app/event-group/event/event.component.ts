@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
+import {ObserveDataService} from '../../services/observe-data.service';
 
 @Component({
   selector: 'app-event',
@@ -19,13 +20,16 @@ export class EventComponent implements OnInit {
   public month: any;
   public opened: boolean = false;
 
-  public constructor(private location: Location) {
-    if (window.matchMedia('(min-width: 900px)').matches) {
-      this.opened = true;
-    }
+  public constructor(
+    private location: Location,
+    public observe: ObserveDataService
+  ) {
   }
 
   public ngOnInit(): void {
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      this.opened = true;
+    }
     if ( this.data ) {
       this.image = this.data.images[0].url;
       this.title = this.data.name;
@@ -40,16 +44,11 @@ export class EventComponent implements OnInit {
     }
   }
 
-  public openOneEvent(){
-
+  public openOneEvent(): void {
+    this.observe.setDataStream(this.data);
   }
 
   public readMore(): void {
     this.opened = true;
   }
-
-  public goBack(): void {
-    this.location.back();
-  }
-
 }
