@@ -1,5 +1,5 @@
-<form (keydown)="keyDownFunction($event,input.value)" onsubmit="return false" class="header__search-bar">
+<form (keyup.enter)="onSubmit(input.value)" onsubmit="return false" class="header__search-bar">
   <input  #input class="search-bar__input-text" name="keyword" type="search" autocomplete="on" placeholder="Search...">
   <button routerLink="/search" class="search-bar__button submit" type="submit" (click)="onSubmit(input.value)">Search</button>
-  <button class="search-bar__button setting" type="button">Search settings</button>
+  <button class="search-bar__button setting" type="button" (click)="closeOpen()">Search settings</button>
 </form>

@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
 import {ObserveDataService} from '../../services/observe-data.service';
 import {HttpParams} from '@angular/common/http';
 import {GetDataService} from '../../services/get-data.service';
-import {FormGroup} from "@angular/forms";
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,30 +10,27 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  @Input() public openedSearch: boolean;
-  public additionalForm: FormGroup;
+  @Output() public additionalBlock: any = new EventEmitter<boolean>();
+  @Input() public isOpen: boolean;
 
   public constructor(
-    public observe: ObserveDataService,
-    private http: GetDataService
+    public observeService: ObserveDataService
   ) { }
 
   public ngOnInit(): void {
   }
 
-  public keyDownFunction(event: any, expression: string): void {
-    if (event.keyCode === 13) {
-      this.onSubmit(expression);
-    }
-  }
-
   public onSubmit(expression: string): void {
     let httpParams: any = new HttpParams();
+    httpParams = httpParams.set('page', '0');
     httpParams = httpParams.set('size', '10');
     httpParams = httpParams.set('keyword', expression);
-    this.http.getEventsData(httpParams).subscribe( (data: any): void => {
-      this.observe.setDataStream(data);
-    });
+    this.observeService.setDataStream(httpParams);
+  }
+
+  public closeOpen(): void {
+    this.isOpen = !this.isOpen;
+    this.additionalBlock.emit(this.isOpen);
   }
 
 }

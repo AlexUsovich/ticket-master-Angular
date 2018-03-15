@@ -89,15 +89,14 @@ export class AddOptionsComponent implements OnInit {
 
   private getInformation(): void {
     let httpParams: any = new HttpParams();
+    httpParams = httpParams.set('page', '0');
     httpParams = httpParams.set('size', '10');
     httpParams = httpParams.set('startDateTime', this.datetime.convertData(this.additionalForm.get('startDate').value));
     httpParams = httpParams.set('endDateTime', this.datetime.convertData(this.additionalForm.get('endDate').value));
     if (this.additionalForm.get('city').value !== null) {httpParams = httpParams.set('city', this.additionalForm.get('city').value); }
     if ((this.additionalForm.get('category').value !== null) && (this.additionalForm.get('category').value !== 'Select category')) {httpParams = httpParams.set('classificationName', this.additionalForm.get('category').value); }
     if ((this.additionalForm.get('subcategory').value !== null) && (this.additionalForm.get('subcategory').value !== 'Select sub category')) {httpParams = httpParams.set('keyword', this.additionalForm.get('subcategory').value); }
-    this.http.getEventsData(httpParams).subscribe( (additionalFormData: any): void => {
-      this.observeService.setDataStream(additionalFormData);
-    });
+    this.observeService.setDataStream(httpParams);
   }
 
 }

@@ -11,8 +11,7 @@ import {GetDataService} from "../../services/get-data.service";
 export class CategoriesComponent implements OnInit {
 
   public constructor(
-    public observe: ObserveDataService,
-    private http: GetDataService
+    public observeService: ObserveDataService
   ) { }
 
   public ngOnInit(): void {
@@ -20,11 +19,10 @@ export class CategoriesComponent implements OnInit {
 
   public onClick(category: string): void {
     let httpParams: any = new HttpParams();
+    httpParams = httpParams.set('page', '0');
     httpParams = httpParams.set('size', '10');
     httpParams = httpParams.set('classificationName', category);
-    this.http.getEventsData(httpParams).subscribe( (data: any): void => {
-      this.observe.setDataStream(data);
-    });
+    this.observeService.setDataStream(httpParams);
   }
 
 }

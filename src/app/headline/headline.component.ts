@@ -8,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeadlineComponent implements OnInit {
 
   public openedBurger: boolean = false;
+  public openedAdd: boolean = false;
   @Output() public openedSearch: any = new EventEmitter<boolean>();
-  public opened: boolean = false;
 
   public constructor() { }
 
@@ -21,13 +21,13 @@ export class HeadlineComponent implements OnInit {
 
   public changeValuesBurger(): void {
     this.openedBurger = !this.openedBurger;
-    this.openedSearch.emit(false);
+    this.openedAdd = false;
+    this.openedSearch.emit(this.openedAdd);
   }
 
-  public changeValuesSearch(): void {
-    this.opened = !this.opened;
-    this.openedSearch.emit(this.opened);
-    this.openedBurger = false;
+  public openAddComponent(opened: boolean): any {
+    if (opened) {this.openedBurger = false; }
+    this.openedSearch.emit(opened);
   }
 
 }

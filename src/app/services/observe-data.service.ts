@@ -6,7 +6,8 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ObserveDataService {
-  public _dataStream$: Subject<any> = new BehaviorSubject<any>(1);
+  public _dataStream$: Subject<any> = new BehaviorSubject<any>(null);
+  public _eventData: Subject<any> = new BehaviorSubject<any>(null);
 
   public getDataStream(): Observable<any> {
     return this._dataStream$.asObservable();
@@ -14,6 +15,14 @@ export class ObserveDataService {
 
   public setDataStream(data: any): void {
     this._dataStream$.next(data);
+  }
+
+  public getEventData(): Observable<any> {
+    return this._eventData.asObservable();
+  }
+
+  public setEventData(data: any): void {
+    this._eventData.next(data);
   }
 
 }

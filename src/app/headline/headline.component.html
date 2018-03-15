@@ -1,7 +1,7 @@
 <div class="content">
  <div class="header__top">
     <a class="header__logo" href=#> Logo-Ticketmaster </a>
-    <app-search-bar [openedSearch]="openedSearch" (click)="changeValuesSearch()"></app-search-bar>
+    <app-search-bar [isOpen]="openedAdd" (additionalBlock)="openAddComponent($event)"></app-search-bar>
     <div class="header__menu">
       <a href="#" class="menu__item my-acc">My Acc</a>
       <a href="#" class="menu__item">Help</a>

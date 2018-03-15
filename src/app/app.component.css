@@ -24,10 +24,10 @@ app-headline {
   right:0;
   bottom:0;
   background: rgba(60, 0, 54, 0.98);
-  z-index: 100;
+  transition: 2.5s;
 }
 
-.svg_anm {
+#svg_anm {
   left: 50%;top: 48%;
   margin-left:-50px;
   margin-top:-50px;
@@ -36,6 +36,7 @@ app-headline {
   height: 100px;
   background: url(./pufff.svg) center center no-repeat;
   background-size:70px;
+  transition: 2.5s;
 }
 
 .footer{
@@ -43,6 +44,7 @@ app-headline {
   width: 100%;
   background: rgba(60, 0, 54, 0.81);
   bottom: 0;
+
 }
 
 @media screen and (max-width: 900px) {
@@ -78,3 +80,5 @@ app-headline {
     border-radius: 10px;
   }
 }
+
+
