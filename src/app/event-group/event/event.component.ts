@@ -22,8 +22,7 @@ export class EventComponent implements OnInit {
       this.opened = true;
     }
     if ( this.data ) {
-      this.event = new Event();
-      this.event.initialize(this.data);
+      this.event = new Event(this.data);
     }
   }
 

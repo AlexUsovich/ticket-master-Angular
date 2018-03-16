@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
+import {BaseRepositoryService} from './base-repository.service';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
-export class CategoriesRepositoryService {
+export class CategoriesRepositoryService extends BaseRepositoryService {
+  private SOURCE: string = 'classifications.json';
 
-  constructor() { }
+  public constructor(public httpClient: HttpClient) {
+    super();
+  }
+
+  public getEventsData(params: any): Observable<any> {
+    return this.httpClient.get(this.getUrl(this.SOURCE), { params: params });
+  }
 
 }

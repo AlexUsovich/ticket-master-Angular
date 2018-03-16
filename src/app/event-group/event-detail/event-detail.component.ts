@@ -21,8 +21,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.subscription = this.observeService.getEventData().subscribe((data: any) => {
-      this.event = new Event();
-      this.event.initialize(data);
+      this.event = new Event(data);
     });
   }
 

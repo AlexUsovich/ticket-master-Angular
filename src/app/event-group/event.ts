@@ -9,7 +9,7 @@ export class Event {
   public time: string;
   public month: any;
 
-  public initialize(data: any): void {
+  public constructor(data: any) {
     this.image = data.images[0].url;
     this.title = data.name;
     this.venues = `${data._embedded.venues[0].name}in${data._embedded.venues[0].city.name}`;
