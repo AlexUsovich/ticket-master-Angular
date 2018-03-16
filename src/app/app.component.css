@@ -10,10 +10,10 @@ app-add-options {
   width: 60%;
 }
 
-app-headline {
+app-header {
   position: fixed;
   width: 100%;
-  background: url(./headline/header2.jpg);
+  background: url(./header/header2.jpg);
   z-index: 99;
 }
 
@@ -24,11 +24,12 @@ app-headline {
   right:0;
   bottom:0;
   background: rgba(60, 0, 54, 0.98);
-  transition: 2.5s;
+  transition: 2.8s;
 }
 
 #svg_anm {
-  left: 50%;top: 48%;
+  left: 50%;
+  top: 48%;
   margin-left:-50px;
   margin-top:-50px;
   position: absolute;
@@ -80,5 +81,4 @@ app-headline {
     border-radius: 10px;
   }
 }
-
 

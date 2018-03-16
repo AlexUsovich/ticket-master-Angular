@@ -13,6 +13,7 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  transition: all 2s;
 }
 
 .photo__container{
@@ -25,6 +26,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  transition: all 2s;
 }
 
 .photo__image{
@@ -41,7 +43,6 @@
   margin-bottom: 1rem;
   font-size: 1.9rem;
 }
-
 
 .event__title:hover{
   cursor: pointer;
@@ -61,11 +62,9 @@
   font-size: 1.5rem;
 }
 
-
 .event__descrip p,h4{
   margin: 0;
 }
-
 
 .events__happening-soon, .categories{
   display: flex;
@@ -73,7 +72,6 @@
   justify-content: space-around;
   align-items: center;
 }
-
 
 .hs-event, .category-event {
   width: 49%;
@@ -103,12 +101,10 @@
 }
 
 .day{
-  opacity: 1;
   font-size: 5.8rem;
 }
 
 .month{
-  opacity: 1;
   font-size: 3.6rem;
 }
 
@@ -116,6 +112,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   flex: 1 0 auto;
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 900px) {

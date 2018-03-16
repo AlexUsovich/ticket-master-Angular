@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import {ObserveDataService} from '../../services/observe-data.service';
+import {ObserveDataService} from '../../services/data-stream-service/data-stream.service';
 
 @Component({
   selector: 'app-event',
@@ -21,7 +21,6 @@ export class EventComponent implements OnInit {
   public opened: boolean = false;
 
   public constructor(
-    private location: Location,
     public observe: ObserveDataService
   ) {
   }
@@ -39,7 +38,7 @@ export class EventComponent implements OnInit {
         this.venues = `${this.data._embedded.venues[0].name}in${this.data._embedded.venues[0].city.name}`;
       }
       this.description = this.data.info;
-      if ((this.data.classifications[0].genre) && (this.data.classifications[0].subGenre.name)) {
+      if ((this.data.classifications) && (this.data.classifications[0].subGenre.name)) {
         this.classifications = `${this.data.classifications[0].genre.name}/${this.data.classifications[0].subGenre.name}`;
       }
       if (this.data.dates.start.localDate) {
@@ -57,6 +56,6 @@ export class EventComponent implements OnInit {
   }
 
   public readMore(): void {
-    this.opened = true;
+    this.opened = !this.opened;
   }
 }

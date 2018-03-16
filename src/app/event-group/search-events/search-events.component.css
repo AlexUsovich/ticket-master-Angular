@@ -8,15 +8,13 @@
 }
 
 .previous {
-  background: url("./row.png") no-repeat;
+  background: url("./left-arrow.png") no-repeat;
   background-size: 100%;
-  background-position: center;
 }
 
 .next {
-  background: url("./row2.png") no-repeat;
+  background: url("./right-arrow.png") center no-repeat;
   background-size: 100%;
-  background-position: center;
   float:right;
 }
 

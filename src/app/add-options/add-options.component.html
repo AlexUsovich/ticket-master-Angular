@@ -1,15 +1,15 @@
 <form [formGroup]="additionalForm" onsubmit="return false" class="aside__location-form">
   <h3 class="aside__title">Shop for Events</h3>
   <input formControlName="city" class="location-form__item" name="city" type="text" autocomplete="on" placeholder="Enter city">
-  <select formControlName="category" id="category" name="classificationName" class="location-form__item" >
+  <select formControlName="category" name="classificationName" class="location-form__item" >
     <option *ngFor="let category of categories">{{category}}</option>
   </select>
-  <select formControlName="subcategory" id="sub-category" name="keyword" class="location-form__item">
+  <select formControlName="subcategory" name="keyword" class="location-form__item">
     <option *ngFor="let genre of genres"> {{genre}} </option>
   </select>
   <span  class="aside__text">From:</span>
-  <input formControlName="startDate" class="location-form__item input-date" value={{today}} name="startDateTime" id="datePicker" type="date" placeholder="Select start data">
+  <input formControlName="startDate" class="location-form__item input-date" value={{today}} name="startDateTime" type="date" placeholder="Select start data">
   <span class="aside__text">To:</span>
-  <input formControlName="endDate" class="location-form__item input-date" value={{inWeek}} name="endDateTime" id="datePicker2" type="date" placeholder="Select end data">
+  <input formControlName="endDate" class="location-form__item input-date" value={{inWeek}} name="endDateTime" type="date" placeholder="Select end data">
   <button routerLink="/search" class="location-form__submit" (click)="getInformation()" type="submit">Apply</button>
 </form>

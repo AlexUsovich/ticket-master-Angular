@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-headline',
-  templateUrl: './headline.component.html',
-  styleUrls: ['./headline.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class HeadlineComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   public openedBurger: boolean = false;
   public openedAdd: boolean = false;

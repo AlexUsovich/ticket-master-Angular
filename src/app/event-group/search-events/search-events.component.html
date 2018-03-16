@@ -1,6 +1,6 @@
 <h2 class="events__title">{{title}}</h2>
-<button [style.visibility]="!previous ? 'hidden' : 'visible'" (click)="changePage('previous')" class="page_button previous">previous</button>
-<button [style.visibility]="!next ? 'hidden' : 'visible'" (click)="changePage('next')" class="page_button next">next</button>
+<button [style.visibility]="!previous ? 'hidden' : 'visible'" (click)="previousPage()" class="page_button previous">previous</button>
+<button [style.visibility]="!next ? 'hidden' : 'visible'" (click)="nextPage()" class="page_button next">next</button>
 <app-event  *ngFor="let event of events" [data]="event"></app-event>
-<button [style.visibility]="!previous ? 'hidden' : 'visible'" (click)="changePage('previous')" class="page_button previous">previous</button>
-<button [style.visibility]="!next ? 'hidden' : 'visible'" (click)="changePage('next')" class="page_button next">next</button>
+<button [style.visibility]="!previous ? 'hidden' : 'visible'" (click)="previousPage()" class="page_button previous">previous</button>
+<button [style.visibility]="!next ? 'hidden' : 'visible'" (click)="nextPage()" class="page_button next">next</button>

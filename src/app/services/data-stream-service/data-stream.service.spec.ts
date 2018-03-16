@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ObserveDataService } from './observe-data.service';
+import { ObserveDataService } from './data-stream.service';
 
 describe('ObserveDataService', () => {
   beforeEach(() => {

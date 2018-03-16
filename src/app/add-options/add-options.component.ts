@@ -1,16 +1,17 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { GetDataService } from '../services/get-data.service';
-import { DateTimeService } from '../services/date-time.service';
+import { GetDataService } from '../services/get-data-service/get-data.service';
+import { DateTimeService } from '../services/date-time-service/date-time.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { HttpParams } from '@angular/common/http';
-import { ObserveDataService } from '../services/observe-data.service';
+import { ObserveDataService } from '../services/data-stream-service/data-stream.service';
 
 @Component({
   selector: 'app-add-options',
   templateUrl: './add-options.component.html',
   styleUrls: ['./add-options.component.css']
 })
+
 export class AddOptionsComponent implements OnInit {
   @Output() public searchData: EventEmitter<any> = new  EventEmitter<any>();
 
@@ -25,16 +26,16 @@ export class AddOptionsComponent implements OnInit {
   private categoryTypeSubscription: Subscription;
 
   public constructor(
-    private http: GetDataService,
+    private getDataService: GetDataService,
     public observeService: ObserveDataService,
-    private datetime: DateTimeService,
+    private dateTimeService: DateTimeService,
     private fb: FormBuilder
   ) {
-    this.today = datetime.todayCalendar;
-    this.inWeek = datetime.inWeekCalendar;
   }
 
   public ngOnInit(): void {
+    this.today = this.dateTimeService. getInWeekCalendarDate();
+    this.inWeek = this.dateTimeService.getTodayCalendarDate();
     this.getCategory();
     this.initForm();
     this.subscribeToUserType();
@@ -66,7 +67,7 @@ export class AddOptionsComponent implements OnInit {
   }
 
   private getCategory(): void {
-    this.http.getCategoryData().subscribe( (data: any): void => {
+    this.getDataService.getCategoryData().subscribe( (data: any): void => {
       this.data = data._embedded.classifications;
       this.data.forEach( (classification: any) => {
         if (classification.segment) {
@@ -80,9 +81,9 @@ export class AddOptionsComponent implements OnInit {
     this.genres = ['Select sub category'];
     this.data.forEach( (classification: any) => {
       if (classification.segment && classification.segment.name === category) {
-          classification.segment._embedded.genres.forEach((genre: any) => {
-            this.genres.push(genre.name);
-          });
+        classification.segment._embedded.genres.forEach((genre: any) => {
+          this.genres.push(genre.name);
+        });
       }
     });
   }
@@ -91,8 +92,8 @@ export class AddOptionsComponent implements OnInit {
     let httpParams: any = new HttpParams();
     httpParams = httpParams.set('page', '0');
     httpParams = httpParams.set('size', '10');
-    httpParams = httpParams.set('startDateTime', this.datetime.convertData(this.additionalForm.get('startDate').value));
-    httpParams = httpParams.set('endDateTime', this.datetime.convertData(this.additionalForm.get('endDate').value));
+    httpParams = httpParams.set('startDateTime', this.dateTimeService.convertData(this.additionalForm.get('startDate').value));
+    httpParams = httpParams.set('endDateTime', this.dateTimeService.convertData(this.additionalForm.get('endDate').value));
     if (this.additionalForm.get('city').value !== null) {httpParams = httpParams.set('city', this.additionalForm.get('city').value); }
     if ((this.additionalForm.get('category').value !== null) && (this.additionalForm.get('category').value !== 'Select category')) {httpParams = httpParams.set('classificationName', this.additionalForm.get('category').value); }
     if ((this.additionalForm.get('subcategory').value !== null) && (this.additionalForm.get('subcategory').value !== 'Select sub category')) {httpParams = httpParams.set('keyword', this.additionalForm.get('subcategory').value); }

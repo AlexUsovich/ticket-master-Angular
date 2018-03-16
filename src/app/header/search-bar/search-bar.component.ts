@@ -1,7 +1,7 @@
 import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
-import {ObserveDataService} from '../../services/observe-data.service';
+import {ObserveDataService} from '../../services/data-stream-service/data-stream.service';
 import {HttpParams} from '@angular/common/http';
-import {GetDataService} from '../../services/get-data.service';
+import {GetDataService} from '../../services/get-data-service/get-data.service';
 import {FormGroup} from '@angular/forms';
 
 @Component({

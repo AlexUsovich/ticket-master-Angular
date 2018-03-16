@@ -35,16 +35,14 @@
 }
 
 .submit {
-  background: url("./lup3.png") no-repeat;
+  background: url("./magnifier.png") center no-repeat;
   background-size: 100%;
-  background-position: center;
   text-indent: -9999px;
 }
 
 .setting {
-  background: url("./points.png");
+  background: url("./spread.png") center;
   background-size: 100%;
-  background-position: center;
   display: none;
   max-width: 30px;
   text-indent: -9999px;

@@ -4,16 +4,7 @@
   <div class="burger-line"></div>
 </div>
 <ul *ngIf="openedBurger" class="burger-menu">
-  <li>
-    <a href="#">My Acc</a>
-  </li>
-  <li>
-    <a href="#">Bookmarks</a>
-  </li>
-  <li>
-    <a href="#">Help</a>
-  </li>
-  <li>
-    <a href="#">Log out</a>
+  <li *ngFor="let link of links">
+    <a href="#">{{link}}</a>
   </li>
 </ul>

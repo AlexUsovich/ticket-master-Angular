@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {ObserveDataService} from "../../services/observe-data.service";
-import {HttpParams} from "@angular/common/http";
-import {GetDataService} from "../../services/get-data.service";
+import {ObserveDataService} from '../../services/data-stream-service/data-stream.service';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent {
+  public categories: Array<string> = ['Music', 'Sport', 'Arts & Theater', 'Family'];
 
   public constructor(
     public observeService: ObserveDataService
   ) { }
-
-  public ngOnInit(): void {
-  }
 
   public onClick(category: string): void {
     let httpParams: any = new HttpParams();

@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BurgerMenuComponent implements OnInit {
   @Input() public openedBurger: boolean;
-
-  public constructor() { }
+  public links: Array<string> = ['My Acc', 'Bookmarks', 'Help', 'Log out'];
 
   public ngOnInit(): void {
   }
