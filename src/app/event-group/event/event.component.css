@@ -13,7 +13,7 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  transition: all 2s;
+  transition: all 1.5s;
 }
 
 .photo__container{
@@ -113,6 +113,7 @@
   cursor: pointer;
   flex: 1 0 auto;
   margin-bottom: 1rem;
+  color: #5d1862;
 }
 
 @media screen and (max-width: 900px) {
