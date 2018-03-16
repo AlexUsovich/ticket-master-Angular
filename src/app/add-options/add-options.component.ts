@@ -34,8 +34,8 @@ export class AddOptionsComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.today = this.dateTimeService. getInWeekCalendarDate();
-    this.inWeek = this.dateTimeService.getTodayCalendarDate();
+    this.today = this.dateTimeService.getTodayCalendarDate();
+    this.inWeek = this.dateTimeService.getInWeekCalendarDate();
     this.getCategory();
     this.initForm();
     this.subscribeToUserType();
@@ -89,15 +89,19 @@ export class AddOptionsComponent implements OnInit {
   }
 
   private getInformation(): void {
-    let httpParams: any = new HttpParams();
-    httpParams = httpParams.set('page', '0');
-    httpParams = httpParams.set('size', '10');
-    httpParams = httpParams.set('startDateTime', this.dateTimeService.convertData(this.additionalForm.get('startDate').value));
-    httpParams = httpParams.set('endDateTime', this.dateTimeService.convertData(this.additionalForm.get('endDate').value));
-    if (this.additionalForm.get('city').value !== null) {httpParams = httpParams.set('city', this.additionalForm.get('city').value); }
-    if ((this.additionalForm.get('category').value !== null) && (this.additionalForm.get('category').value !== 'Select category')) {httpParams = httpParams.set('classificationName', this.additionalForm.get('category').value); }
-    if ((this.additionalForm.get('subcategory').value !== null) && (this.additionalForm.get('subcategory').value !== 'Select sub category')) {httpParams = httpParams.set('keyword', this.additionalForm.get('subcategory').value); }
-    this.observeService.setDataStream(httpParams);
+    const params: any = {
+      page: 0,
+      size: 10,
+      city: null,
+      classificationName: null,
+      keyword: null,
+      startDateTime: this.dateTimeService.convertData(this.additionalForm.get('startDate').value),
+      endDateTime: this.dateTimeService.convertData(this.additionalForm.get('endDate').value)
+    };
+    params.city = this.additionalForm.get('city').value;
+    if (this.additionalForm.get('category').value !== 'Select category') {params.classificationName = this.additionalForm.get('category').value; }
+    if (this.additionalForm.get('subcategory').value !== 'Select sub category') {params.keyword = this.additionalForm.get('subcategory').value; }
+    this.observeService.setDataStream(params);
   }
 
 }

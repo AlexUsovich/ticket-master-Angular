@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Subject } from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {HttpParams} from "@angular/common/http";
 
 @Injectable()
 export class ObserveDataService {
@@ -14,7 +15,13 @@ export class ObserveDataService {
   }
 
   public setDataStream(data: any): void {
-    this._dataStream$.next(data);
+    let httpParams: any = new HttpParams();
+    Object.keys(data).forEach((key: string) => {
+      if (data[key] !== null) {
+        httpParams = httpParams.set(key, data[key]);
+      }
+    });
+    this._dataStream$.next(httpParams);
   }
 
   public getEventData(): Observable<any> {

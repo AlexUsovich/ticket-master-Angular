@@ -8,6 +8,7 @@ import {ISubscription} from 'rxjs/Subscription';
   templateUrl: './search-events.component.html',
   styleUrls: ['./search-events.component.css']
 })
+
 export class SearchEventsComponent implements OnInit, OnDestroy {
   public title: string = 'Query results';
   public data: any;

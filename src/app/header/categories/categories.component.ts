@@ -15,11 +15,12 @@ export class CategoriesComponent {
   ) { }
 
   public onClick(category: string): void {
-    let httpParams: any = new HttpParams();
-    httpParams = httpParams.set('page', '0');
-    httpParams = httpParams.set('size', '10');
-    httpParams = httpParams.set('classificationName', category);
-    this.observeService.setDataStream(httpParams);
+    const params: any = {
+      page: 0,
+      size: 10,
+      classificationName: category
+    };
+    this.observeService.setDataStream(params);
   }
 
 }
