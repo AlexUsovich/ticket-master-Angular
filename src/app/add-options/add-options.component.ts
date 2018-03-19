@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { HttpParams } from '@angular/common/http';
 import { ObserveDataService } from '../services/data-stream-service/data-stream.service';
+import {CategoriesRepositoryService} from "../services/get-data-service/categories-repository.service";
 
 @Component({
   selector: 'app-add-options',
@@ -26,7 +27,7 @@ export class AddOptionsComponent implements OnInit {
   private categoryTypeSubscription: Subscription;
 
   public constructor(
-    private getDataService: GetDataService,
+    private repositoryService: CategoriesRepositoryService,
     public observeService: ObserveDataService,
     private dateTimeService: DateTimeService,
     private fb: FormBuilder
@@ -67,7 +68,7 @@ export class AddOptionsComponent implements OnInit {
   }
 
   private getCategory(): void {
-    this.getDataService.getCategoryData().subscribe( (data: any): void => {
+    this.repositoryService.getCategoriesData().subscribe( (data: any): void => {
       this.data = data._embedded.classifications;
       this.data.forEach( (classification: any) => {
         if (classification.segment) {

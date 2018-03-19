@@ -14,11 +14,12 @@ import { JustAnnouncedComponent } from './event-group/just-announced/just-announ
 import { HappeningSoonComponent } from './event-group/happening-soon/happening-soon.component';
 import { SearchEventsComponent } from './event-group/search-events/search-events.component';
 import { EventComponent } from './event-group/event/event.component';
-import { GetDataService } from './services/get-data-service/get-data.service';
 import { DateTimeService } from './services/date-time-service/date-time.service';
 import { RouterModule } from '@angular/router';
 import { ObserveDataService } from './services/data-stream-service/data-stream.service';
 import { EventDetailComponent } from './event-group/event-detail/event-detail.component';
+import {CategoriesRepositoryService} from './services/get-data-service/categories-repository.service';
+import {EventsRepositoryService} from './services/get-data-service/events-repository.service';
 
 @NgModule({
   declarations: [
@@ -48,9 +49,10 @@ import { EventDetailComponent } from './event-group/event-detail/event-detail.co
     ])
   ],
   providers: [
-    GetDataService,
     DateTimeService,
-    ObserveDataService
+    ObserveDataService,
+    CategoriesRepositoryService,
+    EventsRepositoryService
   ],
   bootstrap: [AppComponent]
 })

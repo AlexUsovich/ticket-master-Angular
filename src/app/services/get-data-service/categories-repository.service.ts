@@ -11,8 +11,8 @@ export class CategoriesRepositoryService extends BaseRepositoryService {
     super();
   }
 
-  public getEventsData(params: any): Observable<any> {
-    return this.httpClient.get(this.getUrl(this.SOURCE), { params: params });
+  public getCategoriesData(): Observable<any> {
+    return this.httpClient.get(this.getUrl(this.SOURCE));
   }
 
 }

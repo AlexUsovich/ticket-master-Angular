@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import {GetDataService} from '../../services/get-data-service/get-data.service';
 import {DateTimeService} from '../../services/date-time-service/date-time.service';
+import {EventsRepositoryService} from "../../services/get-data-service/events-repository.service";
 
 @Component({
   selector: 'app-happening-soon',
@@ -12,7 +13,7 @@ export class HappeningSoonComponent implements OnInit {
   public events: any;
 
   public constructor(
-    private getDataService: GetDataService,
+    private repositoryService: EventsRepositoryService,
     private dateTimeService: DateTimeService
   ) {
   }
@@ -29,7 +30,7 @@ export class HappeningSoonComponent implements OnInit {
     httpParams = httpParams.set('startDateTime', today);
     httpParams = httpParams.set('endDateTime', inWeek);
 
-    this.getDataService.getEventsData(httpParams).subscribe((data: any): void => {
+    this.repositoryService.getEventsData(httpParams).subscribe((data: any): void => {
       this.events = data._embedded.events;
     });
   }

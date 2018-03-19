@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GetDataService} from '../../services/get-data-service/get-data.service';
 import {ObserveDataService} from '../../services/data-stream-service/data-stream.service';
 import {ISubscription} from 'rxjs/Subscription';
+import {EventsRepositoryService} from "../../services/get-data-service/events-repository.service";
 
 @Component({
   selector: 'app-search-events',
@@ -19,7 +20,7 @@ export class SearchEventsComponent implements OnInit, OnDestroy {
   public next: boolean = true;
 
   public constructor(
-    private getDataService: GetDataService,
+    private repositoryService: EventsRepositoryService,
     private observeService: ObserveDataService,
   ) {
   }
@@ -52,7 +53,7 @@ export class SearchEventsComponent implements OnInit, OnDestroy {
   }
 
   public getEvents(): void {
-    this.getDataService.getEventsData(this.httpParams).subscribe((data: any): void => {
+    this.repositoryService.getEventsData(this.httpParams).subscribe((data: any): void => {
       this.data = data;
       if (data._embedded !== undefined) {
         this.events = data._embedded.events;
