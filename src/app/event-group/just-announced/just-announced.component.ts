@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import {DateTimeService} from '../../services/date-time-service/date-time.service';
-import {EventsRepositoryService} from '../../services/get-data-service/events-repository.service';
+import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
 
 @Component({
   selector: 'app-just-announced',

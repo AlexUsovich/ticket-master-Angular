@@ -1,11 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { GetDataService } from '../services/get-data-service/get-data.service';
 import { DateTimeService } from '../services/date-time-service/date-time.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { HttpParams } from '@angular/common/http';
 import { ObserveDataService } from '../services/data-stream-service/data-stream.service';
-import {CategoriesRepositoryService} from "../services/get-data-service/categories-repository.service";
+import {CategoriesRepositoryService} from '../services/repositories/categories-repository/categories-repository.service';
 
 @Component({
   selector: 'app-add-options',
@@ -69,7 +67,7 @@ export class AddOptionsComponent implements OnInit {
 
   private getCategory(): void {
     this.repositoryService.getCategoriesData().subscribe( (data: any): void => {
-      this.data = data._embedded.classifications;
+      this.data = data;
       this.data.forEach( (classification: any) => {
         if (classification.segment) {
           this.categories.push(classification.segment.name);

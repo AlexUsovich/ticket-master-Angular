@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {GetDataService} from '../../services/get-data-service/get-data.service';
 import {ObserveDataService} from '../../services/data-stream-service/data-stream.service';
 import {ISubscription} from 'rxjs/Subscription';
-import {EventsRepositoryService} from "../../services/get-data-service/events-repository.service";
+import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
 
 @Component({
   selector: 'app-search-events',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
-import {GetDataService} from '../../services/get-data-service/get-data.service';
 import {DateTimeService} from '../../services/date-time-service/date-time.service';
-import {EventsRepositoryService} from "../../services/get-data-service/events-repository.service";
+import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
 
 @Component({
   selector: 'app-happening-soon',

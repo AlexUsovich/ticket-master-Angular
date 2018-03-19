@@ -18,8 +18,8 @@ import { DateTimeService } from './services/date-time-service/date-time.service'
 import { RouterModule } from '@angular/router';
 import { ObserveDataService } from './services/data-stream-service/data-stream.service';
 import { EventDetailComponent } from './event-group/event-detail/event-detail.component';
-import {CategoriesRepositoryService} from './services/get-data-service/categories-repository.service';
-import {EventsRepositoryService} from './services/get-data-service/events-repository.service';
+import {CategoriesRepositoryService} from './services/repositories/categories-repository/categories-repository.service';
+import {EventsRepositoryService} from './services/repositories/events-repository/events-repository.service';
 
 @NgModule({
   declarations: [
