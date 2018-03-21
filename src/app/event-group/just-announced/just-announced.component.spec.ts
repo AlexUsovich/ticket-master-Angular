@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JustAnnouncedComponent } from './just-announced.component';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {DateTimeService} from '../../services/date-time-service/date-time.service';
+import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
+import {EventComponent} from '../event/event.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('JustAnnouncedComponent', () => {
   let component: JustAnnouncedComponent;
@@ -8,7 +13,11 @@ describe('JustAnnouncedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JustAnnouncedComponent ]
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [EventsRepositoryService, HttpClient, HttpHandler, DateTimeService],
+      declarations: [ JustAnnouncedComponent, EventComponent ]
     })
     .compileComponents();
   }));
@@ -19,7 +28,7 @@ describe('JustAnnouncedComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async () => {
     expect(component).toBeTruthy();
   });
 });

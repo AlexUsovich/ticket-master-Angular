@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchBarComponent } from './search-bar.component';
+import {ObserveDataService} from "../../services/data-stream-service/data-stream.service";
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
@@ -8,6 +9,7 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [ObserveDataService],
       declarations: [ SearchBarComponent ]
     })
     .compileComponents();

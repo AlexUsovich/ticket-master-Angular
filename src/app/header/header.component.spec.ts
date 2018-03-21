@@ -1,20 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeadlineComponent } from './header.component';
+import { HeaderComponent } from './header.component';
+import {BurgerMenuComponent} from "./burger-menu/burger-menu.component";
+import {CategoriesComponent} from "./categories/categories.component";
+import {SearchBarComponent} from "./search-bar/search-bar.component";
+import {ObserveDataService} from "../services/data-stream-service/data-stream.service";
 
-describe('HeadlineComponent', () => {
-  let component: HeadlineComponent;
-  let fixture: ComponentFixture<HeadlineComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeadlineComponent ]
+      providers: [ObserveDataService],
+      declarations: [ HeaderComponent, BurgerMenuComponent, CategoriesComponent, SearchBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeadlineComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

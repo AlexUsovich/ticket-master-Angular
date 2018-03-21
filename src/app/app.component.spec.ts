@@ -1,11 +1,48 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {CategoriesRepositoryService} from './services/repositories/categories-repository/categories-repository.service';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FormsModule, NgControl} from '@angular/forms';
+import {HeaderComponent} from './header/header.component';
+import {AddOptionsComponent} from './add-options/add-options.component';
+import {HappeningSoonComponent} from './event-group/happening-soon/happening-soon.component';
+import {SearchEventsComponent} from './event-group/search-events/search-events.component';
+import {EventGroupComponent} from './event-group/event-group.component';
+import {SearchBarComponent} from './header/search-bar/search-bar.component';
+import {EventComponent} from './event-group/event/event.component';
+import {BurgerMenuComponent} from './header/burger-menu/burger-menu.component';
+import {CategoriesComponent} from './header/categories/categories.component';
+import {EventDetailComponent} from './event-group/event-detail/event-detail.component';
+import {JustAnnouncedComponent} from './event-group/just-announced/just-announced.component';
+import {DateTimeService} from "./services/date-time-service/date-time.service";
+import {EventsRepositoryService} from "./services/repositories/events-repository/events-repository.service";
+import {ObserveDataService} from "./services/data-stream-service/data-stream.service";
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+      imports: [RouterTestingModule, FormsModule],
+      providers: [
+        NgControl,
+        DateTimeService,
+        ObserveDataService,
+        CategoriesRepositoryService,
+        EventsRepositoryService
       ],
+      declarations: [
+        AppComponent,
+        HeaderComponent,
+        BurgerMenuComponent,
+        SearchBarComponent,
+        CategoriesComponent,
+        AddOptionsComponent,
+        EventGroupComponent,
+        JustAnnouncedComponent,
+        HappeningSoonComponent,
+        SearchEventsComponent,
+        EventComponent,
+        EventDetailComponent
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
