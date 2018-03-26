@@ -4,16 +4,16 @@ app-add-options {
   width: 30%;
 }
 
-app-event-group {
-  width: 60%;
+/deep/app-event-group, /deep/app-search-events, /deep/app-event-detail{
   flex: auto;
-  padding: 0 4rem;
+  padding: 0 1.5rem;
+  width: 60%;
 }
 
-app-headline {
+app-header {
   position: fixed;
   width: 100%;
-  background: url(./headline/header2.jpg);
+  background: url(./header/header2.jpg);
   z-index: 99;
 }
 
@@ -24,11 +24,12 @@ app-headline {
   right:0;
   bottom:0;
   background: rgba(60, 0, 54, 0.98);
-  z-index: 100;
+  transition: 2.8s;
 }
 
-.svg_anm {
-  left: 50%;top: 48%;
+#svg_anm {
+  left: 50%;
+  top: 48%;
   margin-left:-50px;
   margin-top:-50px;
   position: absolute;
@@ -36,6 +37,7 @@ app-headline {
   height: 100px;
   background: url(./pufff.svg) center center no-repeat;
   background-size:70px;
+  transition: 2.5s;
 }
 
 .footer{
@@ -43,4 +45,40 @@ app-headline {
   width: 100%;
   background: rgba(60, 0, 54, 0.81);
   bottom: 0;
+
 }
+
+@media screen and (max-width: 900px) {
+  app-event-group {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  app-add-options {
+    position: fixed;
+    right: 0;
+    width: 100%;
+    border: #5d1862 3px solid;
+    border-radius: 10px;
+    z-index: 99;
+  }
+
+  .main-container {
+    padding-top: 100px;
+  }
+
+  app-event-group {
+    width: 100%;
+  }
+
+  .content__aside_opened{
+    display: block;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    border: #5d1862 3px solid;
+    border-radius: 10px;
+  }
+}
+

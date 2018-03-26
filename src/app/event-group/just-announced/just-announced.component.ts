@@ -1,32 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { HttpParams } from '@angular/common/http';
-import {GetDataService} from '../../services/get-data.service';
-import {DateTimeService} from '../../services/date-time.service';
+import {DateTimeService} from '../../services/date-time-service/date-time.service';
+import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
+import {ISubscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-just-announced',
   templateUrl: './just-announced.component.html',
   styleUrls: ['./just-announced.component.css']
 })
-export class JustAnnouncedComponent implements OnInit {
+export class JustAnnouncedComponent implements OnInit, OnDestroy {
+  public events: any;
+  public subscription: ISubscription;
 
-  public constructor(private http: GetDataService, private datetime: DateTimeService) {
+  public constructor(
+    private repositoryService: EventsRepositoryService,
+    private dateTimeService: DateTimeService
+  ) {
   }
 
   public ngOnInit(): void {
     this.getData();
   }
 
+  public ngOnDestroy(): void {
+    if ( this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private getData(): void {
-    const today: any = this.datetime.today;
-    const inWeek: any = this.datetime.inWeek;
+    const today: any = this.dateTimeService.getTodayDate();
+    const inWeek: any = this.dateTimeService.getInWeekDate();
     let httpParams: any = new HttpParams();
     httpParams = httpParams.set('size', '4');
-    httpParams = httpParams.set('startDateTime', today);
-    httpParams = httpParams.set('endDateTime', inWeek);
+    httpParams = httpParams.set('onsaleStartDateTime', today);
+    httpParams = httpParams.set('onsaleEndDateTime', inWeek);
 
-    this.http.getEventsData(httpParams).subscribe((data: any): void => {
-      alert('!');
+    this.subscription = this.repositoryService.getEventsData(httpParams).subscribe((data: any): void => {
+      this.events = data._embedded.events;
     });
   }
 

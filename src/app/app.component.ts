@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title: string = 'app';
+  public openedSearch: any;
+  public active: boolean = true;
+
+  public ngOnInit(): void {
+    window.onload = () => {
+      this.active = false;
+    };
+  }
+
+  public openAddComponent(opened: any): any {
+    this.openedSearch = opened;
+  }
+
 }

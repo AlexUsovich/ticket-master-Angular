@@ -7,15 +7,16 @@
   flex-wrap: wrap;
 }
 
-.event__foto {
+.event__photo {
   width: 39%;
   margin-right: 1%;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  transition: all 1.5s;
 }
 
-.foto__container{
+.photo__container{
   position:relative;
   width: 100%;
 }
@@ -25,14 +26,15 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  transition: all 2s;
 }
 
-.foto__image{
+.photo__image{
   max-width: 100%;
   min-width: 100%;
 }
 
-.foto__image:hover{
+.photo__image:hover{
   cursor: pointer;
 }
 
@@ -41,7 +43,6 @@
   margin-bottom: 1rem;
   font-size: 1.9rem;
 }
-
 
 .event__title:hover{
   cursor: pointer;
@@ -55,17 +56,15 @@
   margin-bottom: 1rem;
 }
 
-.event__data{
+.event__date{
   flex: 0 0 auto;
   position: relative;
   font-size: 1.5rem;
 }
 
-
 .event__descrip p,h4{
   margin: 0;
 }
-
 
 .events__happening-soon, .categories{
   display: flex;
@@ -73,7 +72,6 @@
   justify-content: space-around;
   align-items: center;
 }
-
 
 .hs-event, .category-event {
   width: 49%;
@@ -92,7 +90,7 @@
   flex-direction: column;
 }
 
-.foto__data{
+.photo__data{
   background: rgba(88, 18, 91, 0.14);
   border-radius: 10px;
   position: absolute;
@@ -103,33 +101,24 @@
 }
 
 .day{
-  opacity: 1;
   font-size: 5.8rem;
 }
 
 .month{
-  opacity: 1;
   font-size: 3.6rem;
 }
 
-.event__classifications{
-  display: none;
-}
-
 .info{
-  display: none;
   font-size: 1.5rem;
   cursor: pointer;
   flex: 1 0 auto;
+  margin-bottom: 1rem;
+  color: #5d1862;
 }
 
 @media screen and (max-width: 900px) {
-  .info{
-    display: inline;
-  }
-
-  .event__descrip {
-    display: none;
+  .event__photo_opened {
+    width: 100%;
   }
 
   .day{

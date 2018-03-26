@@ -1,9 +1,4 @@
 <div class="events__happening-soon">
   <h2 class="events__title">Happening Soon</h2>
-  <app-event class="hs-event"></app-event>
-  <app-event class="hs-event"></app-event>
-  <app-event class="hs-event"></app-event>
-  <app-event class="hs-event"></app-event>
-  <app-event class="hs-event"></app-event>
-  <app-event class="hs-event"></app-event>
+  <app-event *ngFor="let event of events" [data]="event"></app-event>
 </div>

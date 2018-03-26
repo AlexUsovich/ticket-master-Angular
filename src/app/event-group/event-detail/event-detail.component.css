@@ -1,0 +1,16 @@
+.event{
+  transition: all 0.3s ease;
+}
+
+.event__photo {
+  width: 100%;
+}
+
+.back{
+  background: url("./back.png") no-repeat;
+  background-size: contain;
+  padding: 1.4em 4em;
+  margin: 1rem auto;
+  border: none;
+  cursor: pointer;
+}

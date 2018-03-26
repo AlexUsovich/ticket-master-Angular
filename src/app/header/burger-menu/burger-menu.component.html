@@ -1,0 +1,10 @@
+<div class="burger-icon">
+  <div class="burger-line"></div>
+  <div class="burger-line"></div>
+  <div class="burger-line"></div>
+</div>
+<ul *ngIf="openedBurger" class="burger-menu">
+  <li *ngFor="let link of links">
+    <a href="#">{{link}}</a>
+  </li>
+</ul>

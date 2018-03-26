@@ -1,26 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeadlineComponent } from './headline/headline.component';
-import { BurgerMenuComponent } from './headline/burger-menu/burger-menu.component';
-import { SearchBarComponent } from './headline/search-bar/search-bar.component';
-import { CategoriesComponent } from './headline/categories/categories.component';
+import { HeaderComponent } from './header/header.component';
+import { BurgerMenuComponent } from './header/burger-menu/burger-menu.component';
+import { SearchBarComponent } from './header/search-bar/search-bar.component';
+import { CategoriesComponent } from './header/categories/categories.component';
 import { AddOptionsComponent } from './add-options/add-options.component';
 import { EventGroupComponent } from './event-group/event-group.component';
 import { JustAnnouncedComponent } from './event-group/just-announced/just-announced.component';
 import { HappeningSoonComponent } from './event-group/happening-soon/happening-soon.component';
 import { SearchEventsComponent } from './event-group/search-events/search-events.component';
 import { EventComponent } from './event-group/event/event.component';
-import { GetDataService } from './services/get-data.service';
-import {DateTimeService} from "./services/date-time.service";
+import { DateTimeService } from './services/date-time-service/date-time.service';
+import { RouterModule } from '@angular/router';
+import { ObserveDataService } from './services/data-stream-service/data-stream.service';
+import { EventDetailComponent } from './event-group/event-detail/event-detail.component';
+import {CategoriesRepositoryService} from './services/repositories/categories-repository/categories-repository.service';
+import {EventsRepositoryService} from './services/repositories/events-repository/events-repository.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeadlineComponent,
+    HeaderComponent,
     BurgerMenuComponent,
     SearchBarComponent,
     CategoriesComponent,
@@ -29,16 +33,26 @@ import {DateTimeService} from "./services/date-time.service";
     JustAnnouncedComponent,
     HappeningSoonComponent,
     SearchEventsComponent,
-    EventComponent
+    EventComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'home', component: EventGroupComponent},
+      {path: 'search', component: SearchEventsComponent},
+      {path: 'event-detail', component: EventDetailComponent},
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
+    ])
   ],
   providers: [
-    GetDataService,
-    DateTimeService
+    DateTimeService,
+    ObserveDataService,
+    CategoriesRepositoryService,
+    EventsRepositoryService
   ],
   bootstrap: [AppComponent]
 })
