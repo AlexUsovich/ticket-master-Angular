@@ -5,10 +5,9 @@ import {HttpClient, HttpHandler} from '@angular/common/http';
 import {ObserveDataService} from '../services/data-stream-service/data-stream.service';
 import {DateTimeService} from '../services/date-time-service/date-time.service';
 import {ControlContainer, FormBuilder, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('AddOptionsComponent', () => {
-
   let component: AddOptionsComponent;
   let fixture: ComponentFixture<AddOptionsComponent>;
 
@@ -17,7 +16,7 @@ describe('AddOptionsComponent', () => {
       imports: [
         HttpClientTestingModule
       ],
-      providers: [CategoriesRepositoryService, ReactiveFormsModule, ControlContainer, HttpClient, HttpHandler, ObserveDataService, DateTimeService, FormBuilder],
+      providers: [CategoriesRepositoryService, ReactiveFormsModule, ControlContainer, ObserveDataService, DateTimeService, FormBuilder],
       declarations: [ AddOptionsComponent],
     })
     .compileComponents();

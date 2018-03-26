@@ -19,7 +19,7 @@ describe('EventGroupComponent', () => {
       imports: [
         HttpClientTestingModule
       ],
-      providers: [EventsRepositoryService, HttpClient, HttpHandler, DateTimeService],
+      providers: [EventsRepositoryService, DateTimeService],
       declarations: [ EventGroupComponent, JustAnnouncedComponent, HappeningSoonComponent, EventComponent ],
     })
     .compileComponents();

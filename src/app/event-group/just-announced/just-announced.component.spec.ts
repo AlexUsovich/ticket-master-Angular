@@ -16,7 +16,7 @@ describe('JustAnnouncedComponent', () => {
       imports: [
         HttpClientTestingModule
       ],
-      providers: [EventsRepositoryService, HttpClient, HttpHandler, DateTimeService],
+      providers: [EventsRepositoryService, DateTimeService],
       declarations: [ JustAnnouncedComponent, EventComponent ]
     })
     .compileComponents();

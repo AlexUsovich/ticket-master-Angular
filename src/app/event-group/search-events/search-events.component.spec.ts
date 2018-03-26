@@ -5,6 +5,7 @@ import {EventComponent} from "../event/event.component";
 import {EventsRepositoryService} from "../../services/repositories/events-repository/events-repository.service";
 import {HttpClient, HttpHandler} from "@angular/common/http";
 import {ObserveDataService} from "../../services/data-stream-service/data-stream.service";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('SearchEventsComponent', () => {
   let component: SearchEventsComponent;
@@ -12,7 +13,10 @@ describe('SearchEventsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [EventsRepositoryService, HttpClient, HttpHandler, ObserveDataService],
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [EventsRepositoryService, ObserveDataService],
       declarations: [ SearchEventsComponent, EventComponent ]
     })
     .compileComponents();
