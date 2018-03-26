@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import {DateTimeService} from '../../services/date-time-service/date-time.service';
 import {EventsRepositoryService} from '../../services/repositories/events-repository/events-repository.service';
+import {ISubscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-just-announced',
   templateUrl: './just-announced.component.html',
   styleUrls: ['./just-announced.component.css']
 })
-export class JustAnnouncedComponent implements OnInit {
+export class JustAnnouncedComponent implements OnInit, OnDestroy {
   public events: any;
+  public subscription: ISubscription;
 
   public constructor(
     private repositoryService: EventsRepositoryService,
@@ -21,6 +23,12 @@ export class JustAnnouncedComponent implements OnInit {
     this.getData();
   }
 
+  public ngOnDestroy(): void {
+    if ( this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private getData(): void {
     const today: any = this.dateTimeService.getTodayDate();
     const inWeek: any = this.dateTimeService.getInWeekDate();
@@ -29,7 +37,7 @@ export class JustAnnouncedComponent implements OnInit {
     httpParams = httpParams.set('onsaleStartDateTime', today);
     httpParams = httpParams.set('onsaleEndDateTime', inWeek);
 
-    this.repositoryService.getEventsData(httpParams).subscribe((data: any): void => {
+    this.subscription = this.repositoryService.getEventsData(httpParams).subscribe((data: any): void => {
       this.events = data._embedded.events;
     });
   }

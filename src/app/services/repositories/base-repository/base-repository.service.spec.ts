@@ -1,11 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { BaseRepositoryService } from './base-repository.service';
+import {HttpClient, HttpHandler} from "@angular/common/http";
 
 describe('BaseRepositoryService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BaseRepositoryService]
+      providers: [BaseRepositoryService, HttpClient, HttpHandler]
     });
   });
 

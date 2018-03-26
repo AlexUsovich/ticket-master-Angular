@@ -1,20 +1,20 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { DateTimeService } from '../services/date-time-service/date-time.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
+import {ISubscription, Subscription} from 'rxjs/Subscription';
 import { ObserveDataService } from '../services/data-stream-service/data-stream.service';
 import {CategoriesRepositoryService} from '../services/repositories/categories-repository/categories-repository.service';
 
 @Component({
   selector: 'app-add-options',
   templateUrl: './add-options.component.html',
-  styleUrls: ['./add-options.component.css']
+  styleUrls: ['./add-options.component.css'],
 })
 
-export class AddOptionsComponent implements OnInit {
+export class AddOptionsComponent implements OnInit, OnDestroy {
   @Output() public searchData: EventEmitter<any> = new  EventEmitter<any>();
-
   public additionalForm: FormGroup;
+  public subscription: ISubscription;
 
   public categories: Array<string> = ['Select category'];
   public genres: Array<string> = ['Select sub category'];
@@ -40,8 +40,9 @@ export class AddOptionsComponent implements OnInit {
     this.subscribeToUserType();
   }
 
-  private ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.categoryTypeSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   private initForm(): void {
@@ -66,7 +67,7 @@ export class AddOptionsComponent implements OnInit {
   }
 
   private getCategory(): void {
-    this.repositoryService.getCategoriesData().subscribe( (data: any): void => {
+    this.subscription = this.repositoryService.getCategoriesData().subscribe( (data: any): void => {
       this.data = data;
       this.data.forEach( (classification: any) => {
         if (classification.segment) {
